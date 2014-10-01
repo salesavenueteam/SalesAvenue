@@ -1,0 +1,78 @@
+﻿@model SalesAvenue.Models.User
+
+@{
+    ViewBag.Title = "Registeration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Registeration Form</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model=>model.StoreName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.StoreName, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.StoreName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model=>model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model=>model.UserPassword)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.UserPassword, new { @id="password" })
+            @Html.ValidationMessageFor(model => model.UserPassword)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Confirm Password")
+        </div>
+        <div class="editor-field">
+            @Html.Password("confirm-password")
+            @Html.Label("Password do not match", new { @class="error" })
+        </div>
+             
+        <p>
+            <input type="submit" id="submit" value="Proceed" />
+        </p>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.error').hide();
+
+//        $("#submit").click(function () {
+//            var hasError = false;
+//            var passwordVal = $("#password").val();
+//            var checkVal = $("#confirm-password").val();
+//            if (passwordVal == '') {
+//                $("#password").after('<span class="error">Please enter a password.</span>');
+//                hasError = true;
+//            } else if (checkVal == '') {
+//                $("#confirm-password").after('<span class="error">Please re-enter your password.</span>');
+//                hasError = true;
+//            } else if (passwordVal != checkVal) {
+//                $('.error').show();
+//                hasError = true;
+//            }
+//            if (hasError == true) { return false; }
+//        });
+
+
+    });
+
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
